@@ -1,118 +1,103 @@
-# Person-in-WiFi 3D: End-to-End Multi-Person 3D Pose Estimation with Wi-Fi
+# 🛰️ Person-in-WiFi 3D  
+**End-to-End Multi-Person 3D Pose Estimation with Wi-Fi**
 
-Wi-Fi signals, in contrast to cameras, offer privacy protection and occlusion resilience for some practical scenarios such as smart homes, elderly care, and virtual reality.
-Recent years have seen remarkable progress in the estimation of single-person 2D pose, single-person 3D pose, and multi-person 2D pose. This paper takes a step forward by introducing Person-in-WiFi 3D, a pioneering Wi-Fi
-system that accomplishes multi-person 3D pose estimation. Person-in-WiFi 3D has two main updates. Firstly, it has a greater number of Wi-Fi devices to enhance the capability for capturing spatial reflections from multiple individuals.
-Secondly, it leverages the Transformer for end-to-end estimation. Compared to its predecessor, Person-in-WiFi 3D is storage-efficient and fast. We deployed a proof-of-concept system in 4m × 3.5m areas and collected a dataset of over
-97K frames with seven volunteers. Person-in-WiFi 3D attains 3D joint localization errors of 91.7mm (1-person), 108.1mm (2-person), and 125.3mm (3-person), comparable to cameras and millimeter-wave radars.
+---
 
+## 📘 Overview
+Wi-Fi signals, unlike cameras, provide **privacy protection** and **occlusion resilience**, making them ideal for scenarios such as **smart homes**, **elderly care**, and **virtual reality**.  
+Recent years have seen remarkable progress in single-person and multi-person pose estimation — both 2D and 3D.  
+**Person-in-WiFi 3D** takes a step further by introducing a **pioneering Wi-Fi-based system** capable of **multi-person 3D pose estimation**.
 
-Links to our Project: [Person-in-WiFi 3D: End-to-End Multi-Person 3D Pose Estimation with Wi-Fi](https://aiotgroup.github.io/Person-in-WiFi-3D/)
+### 🔍 Key Features
+- **Multiple Wi-Fi devices** to enhance spatial reflection capture.  
+- **Transformer-based architecture** for **end-to-end estimation**.  
+- **Storage-efficient** and **fast**, compared to previous versions.  
+- **High accuracy:**  
+  - 91.7 mm (1 person)  
+  - 108.1 mm (2 persons)  
+  - 125.3 mm (3 persons)
 
-Links to our Code   : [Person-in-WiFi 3D repo](https://github.com/aiotgroup/Person-in-WiFi3D)
+A dataset of **97K+ frames** collected from **7 volunteers** in a **4m × 3.5m** area demonstrates the system’s performance comparable to **camera-based** and **millimeter-wave radar** methods.
 
- <img src="demo/demo mini.gif" width = "900" height = "300" alt="demo gif" align=center />
+---
 
-## Prerequisites
+<p align="center">
+  <img src="demo/demo mini.gif" width="900" height="300" alt="demo gif">
+</p>
+---
 
-- Linux
-- Python 3.7+
-- PyTorch 1.8+
-- CUDA 10.1+
-- [MMCV](https://mmcv.readthedocs.io/en/latest/#installation)
-- [MMDetection](https://mmdetection.readthedocs.io/en/latest/#installation)
+## ⚙️ Prerequisites
+- **Linux (Ubuntu 20.04+ recommended)**  
+- **Python 3.7+**  
+- **PyTorch 1.8+**  
+- **CUDA 10.1+**  
+- **MMCV, MMDetection**
 
-## Getting Started
+---
 
-### Installation
+## 🚀 Installation Guide
 
-Please see [get_started.md](docs/get_started.md) for the basic usage of Opera.
-
-## Acknowledgement
-
-Opera is an open source project built upon [OpenMMLab](https://github.com/open-mmlab/). We appreciate all the contributors who implement this flexible and efficient toolkits.
-
-
-
-### File Structrue
+### Step 1. System Setup
 ```bash
-.
-│  LICENSE
-│  README.md
-│  requirements.txt
-│  setup.cfg
-│  setup.py
-├─data
-│  ├─wifipose
-│  │  ├─train_data
-│  │  │     ├─ csi
-│  │  │     ├─ keypoint
-│  │  │     ├─ train_data_list.txt
-│  │  ├─test_data
-│  │  │     ├─ csi
-│  │  │     ├─ keypoint
-│  │  │     ├─ test_data_list.txt
-├─config
-│  ├─base
-│  ├─wifi
-│  │  ├─petr_wifi.py
-├─docs
-│  ├─get_started.md
-├─opera
-│  ├─apis
-│  ├─core
-│  ├─datasets
-│  ├─models
-│  ├─__init__.py
-│  ├─version.py
-├─requirements
-│  ├─build.txt
-│  ├─docs.txt
-│  ├─mminstall.txt
-│  ├─optional.txt
-│  ├─readthedocs.txt
-│  ├─runtime.txt
-│  ├─tests.txt
-├─result
-├─third_party
-│  ├─mmcv
-│  ├─mmdet
-├─tools
-│  ├─dataset_converters
-│  ├─dist_test.sh
-│  ├─dist_train.sh
-│  ├─eval_metric.py
-│  ├─test_all.sh
-│  ├─test.py
-│  ├─train.py
-
-
+apt update
+apt install -y git python3-pip zip unzip tmux
+pip install gdown
+```
+### Step 2. Install Miniconda
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+export PATH="/root/miniconda3/bin:$PATH"
+conda --version
+/root/miniconda3/bin/conda init bash
+source ~/.bashrc
 ```
 
+---
 
-## Citations
-
-If you find our works useful in your research, please consider citing:
-```BibTeX
-@inproceedings{person3dyan,
-  title={Person-in-WiFi 3D: End-to-End Multi-Person 3D Pose Estimation with Wi-Fi },
-  author={Yan, Kangwei and Wang, Fei and Qian, Bo and Ding, Han and Han, Jinsong and Wei, Xing},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year = {2024}
-}
-
-@inproceedings{shi2022end,
-  title={End-to-End Multi-Person Pose Estimation With Transformers},
-  author={Shi, Dahu and Wei, Xing and Li, Liangqi and Ren, Ye and Tan, Wenming},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={11069--11078},
-  year={2022}
-}
-
+## For environment and dataset, contact us for more information 
+### Step 3. Setup Environment
 
 ```
+gdown <env>
+unzip opera.zip -d miniconda3/envs/
+git clone https://github.com/Winter24/Person-in-WiFi-3D
+conda activate opera
+cd Person-in-WiFi-3D
+```
 
-## License
+### Step 4. Dataset Preparation
+```
+#!/bin/bash
+curl -L -o wifipose-dataset.zip <link>
 
-This project is released under the [Apache 2.0 license](LICENSE).
-# Person-in-WiFi-3D
+mkdir -p data/wifipose
+unzip wifipose-dataset.zip -d data/wifipose
+```
+
+### Step 5. Some Dependency Installation
+```
+apt install -y libgl1-mesa-glx libglib2.0-0 libsm6 libxrender1 libxext6
+cd third_party/mmdet/
+python -m pip install -U pip setuptools wheel
+python -m pip install -e .
+cd ../..
+pip install -r requirements.txt
+pip install -e .
+python -m pip install 'yapf==0.40.1'
+```
+If you get:
+```
+CERTIFICATE_VERIFY_FAILED: unable to get local issuer certificate (_ssl.c:1091)
+```
+Run:
+```
+apt install -y ca-certificates
+update-ca-certificates
+python -m pip install --upgrade pip certifi
+```
+
+### Train:
+```
+python tools/train.py configs/wifi/petr_wifi_linear_fast.py --gpu-id 0 --seed 42 --deterministic
+```
